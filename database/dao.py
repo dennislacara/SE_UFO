@@ -21,10 +21,11 @@ class DAO:
 
     @staticmethod
     def read_anni():
-        try:
-            conn = DBConnect.get_connection()
-        except Exception as e:
-            print(e)
+
+        conn = DBConnect.get_connection()
+        if not conn:
+            print("No database connection")
+            return None
 
         result = []
 
@@ -41,10 +42,10 @@ class DAO:
 
     @staticmethod
     def read_forme():
-        try:
-            conn = DBConnect.get_connection()
-        except Exception as e:
-            print(e)
+        conn = DBConnect.get_connection()
+        if not conn:
+            print("No database connection")
+            return None
 
         result = []
 
@@ -61,10 +62,10 @@ class DAO:
 
     @staticmethod
     def read_vertici():
-        try:
-            conn = DBConnect.get_connection()
-        except Exception as e:
-            print(e)
+        conn = DBConnect.get_connection()
+        if not conn:
+            print("No database connection")
+            return None
 
         result = []
         map_coordinate = dict()
@@ -83,10 +84,10 @@ class DAO:
 
     @staticmethod
     def read_archi():
-        try:
-            conn = DBConnect.get_connection()
-        except Exception as e:
-            print(e)
+        conn = DBConnect.get_connection()
+        if not conn:
+            print("No database connection")
+            return None
 
         result = []
 
@@ -104,10 +105,10 @@ class DAO:
 
     @staticmethod
     def read_vertici_validi(anno, forma):
-        try:
-            conn = DBConnect.get_connection()
-        except Exception as e:
-            print(e)
+        conn = DBConnect.get_connection()
+        if not conn:
+            print("No database connection")
+            return None
 
         result = []
 

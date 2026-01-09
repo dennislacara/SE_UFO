@@ -9,7 +9,10 @@ class Controller:
         """ Metodo per popolare i dropdown """
         anni = self._model.get_anni()
         forme = self._model.get_forme()
-
+        if anni is None or forme is None:
+            self._view.show_alert(' Errore di lettura del database\n'
+                                  ' Dati non importati!')
+            return
         self._view.dd_year.options.clear()
         self._view.dd_shape.options.clear()
         self._view.dd_year.options = [ft.dropdown.Option(anno) for anno in anni]

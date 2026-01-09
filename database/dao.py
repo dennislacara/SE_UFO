@@ -67,18 +67,19 @@ class DAO:
             print(e)
 
         result = []
+        map_coordinate = dict()
 
         cursor = conn.cursor(dictionary=True)
-        query = """ SELECT distinct id FROM state s"""
+        query = """ SELECT distinct id, lat, lng FROM state s"""
         cursor.execute(query)
 
         for row in cursor:
             result.append(row["id"])
-
+            map_coordinate[row["id"]] = (row["lat"], row["lng"])
 
         cursor.close()
         conn.close()
-        return sorted(result)
+        return sorted(result), map_coordinate
 
     @staticmethod
     def read_archi():
@@ -97,7 +98,6 @@ class DAO:
             arco ={row["state1"], row['state2']}
             if arco not in result:
                 result.append((row["state1"], row["state2"]))
-
         cursor.close()
         conn.close()
         return result
@@ -120,7 +120,6 @@ class DAO:
 
         for row in cursor:
             result.append((row["Stato"].upper(), row["NumEventi"]))
-        print(result)
 
         cursor.close()
         conn.close()

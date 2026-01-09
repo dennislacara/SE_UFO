@@ -1,6 +1,6 @@
 
 from database.dao import DAO
-
+p = DAO.read_vertici()
 
 stati = DAO.read_vertici()
 archi = DAO.read_archi()

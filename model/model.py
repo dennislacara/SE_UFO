@@ -53,11 +53,14 @@ class Model:
         result = []
         for nodo in self.G.nodes():
             vicini = list(nx.neighbors(self.G, nodo))
-            somma_eventi = sum([self.G.nodes[n]['Neventi']+ self.G.nodes[nodo]['Neventi'] for n in vicini])
 
-            result.append((nodo, somma_eventi))
             #incremento gli archi del grafo
             self.incremento_archi(nodo, vicini)
+
+            #somma_eventi = sum([self.G.nodes[n]['Neventi']+ self.G.nodes[nodo]['Neventi'] for n in vicini])
+            somma_eventi = sum([arco[2]['SommaEventi'] for arco in self.G.edges(nodo, data=True)])
+
+            result.append((nodo, somma_eventi))
         return result
 
     def incremento_archi(self, nodo, vicini):
@@ -134,4 +137,3 @@ class Model:
             percorso.pop()
             pa.pop()
             pg.pop()
-

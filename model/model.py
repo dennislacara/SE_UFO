@@ -69,8 +69,6 @@ class Model:
             self.best_valore = vp
             self.best_percorso = lp.copy()
             self.info = info.copy()
-        if len(lp) == len(grafo.nodes()):
-            return
 
         for vicino in nx.neighbors(grafo, lp[-1]):
             if grafo[lp[-1]][vicino]['peso'] == 0:
